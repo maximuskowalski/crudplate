@@ -16,7 +16,11 @@ MongoClient.connect(dbConnectionString)
         collection = db.collection('movies')
     })
 
+app.set('view engine', 'ejs')
+app.use(express.static('public'))
+app.use(express.urlencoded({ extended: true }))
+
 app.listen(process.env.PORT || PORT, () => {
-    console.log(`Server is running on ${PORT}`)
+    console.log(`Server is running on ${process.env.PORT}`)
 })
 
